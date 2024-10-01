@@ -25,14 +25,12 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: ['https://smart-brain-aj3m.onrender.com'],
-    methods: '*', 
-    allowedHeaders: "Content-Type, Authorization",
-    credentials: true,
+    origin: 'https://smart-brain-aj3m.onrender.com',
     optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Preflight request handling
 
 const returnClarifyRequestOption = (imageUrl) => {
     const PAT = '5fd4f01917e4476db56ac969e094c0da';
