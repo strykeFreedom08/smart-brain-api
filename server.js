@@ -23,6 +23,15 @@ const pgdb = knex({
 const app = express();
 
 app.use(bodyParser.json());
+
+const corsOptions = {
+    origin: ['https://smart-brain-aj3m.onrender.com'],
+    methods: '*', 
+    allowedHeaders: "Content-Type, Authorization",
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
 app.use(cors());
 
 const returnClarifyRequestOption = (imageUrl) => {
