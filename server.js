@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const knex = require('knex');
 const bcrypt = require('bcryptjs');
 
@@ -22,15 +22,22 @@ const pgdb = knex({
 
 const app = express();
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-const corsOptions = {
-    origin: 'https://smart-brain-aj3m.onrender.com',
-    optionsSuccessStatus: 200
-};
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://smart-brain-aj3m.onrender.com');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    bodyParser.json();
+});
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Preflight request handling
+// const corsOptions = {
+//     origin: 'https://smart-brain-aj3m.onrender.com',
+//     optionsSuccessStatus: 200
+// };
+
+// app.use(cors(corsOptions));
+// app.options('*', cors(corsOptions)); // Preflight request handling
 
 const returnClarifyRequestOption = (imageUrl) => {
     const PAT = '5fd4f01917e4476db56ac969e094c0da';
