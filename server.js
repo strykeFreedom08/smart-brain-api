@@ -32,7 +32,7 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 const returnClarifyRequestOption = (imageUrl) => {
     const PAT = '5fd4f01917e4476db56ac969e094c0da';
