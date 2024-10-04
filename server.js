@@ -22,13 +22,13 @@ const pgdb = knex({
 
 const app = express();
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://smart-brain-aj3m.onrender.com');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    bodyParser.json();
     next();
 });
 
